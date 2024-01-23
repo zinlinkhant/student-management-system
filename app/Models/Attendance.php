@@ -12,7 +12,7 @@ class Attendance extends Model
         'date',
         'student_id',
         'status',
-        'remarks'
+        'remark'
     ];
     public function student()
     {

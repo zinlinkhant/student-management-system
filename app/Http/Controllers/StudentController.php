@@ -37,8 +37,7 @@ class StudentController extends Controller
         $new = $request->validate([
             'email' => 'required',
             'password' => 'required',
-            'fname' => 'required',
-            'lname' => 'required',
+            'name' => 'required',
             'dob' => 'required',
             'phone' => 'required',
         ]);

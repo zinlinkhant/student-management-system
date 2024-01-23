@@ -18,6 +18,11 @@ class ClassroomFactory extends Factory
     {
         return [
             //
+            'name' => fake()->name(),
+            'year' => fake()->date(),
+            'teacher_id' => fake()->randomNumber(1),
+            'grade_id' => fake()->randomNumber(1),
+            'remarks' => fake()->text(5)
         ];
     }
 }

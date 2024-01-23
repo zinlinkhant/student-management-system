@@ -20,10 +20,13 @@ class StudentFactory extends Factory
     {
         return [
             //
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
 
-            'password' => static::$password ??= Hash::make('password')
+            'email' => fake()->unique()->safeEmail(),
+            'password' => static::$password ??= Hash::make('password'),
+            'name' => fake()->name(),
+            'dob' => fake()->date(),
+            'phone' => fake()->phoneNumber(),
+
         ];
     }
 }
