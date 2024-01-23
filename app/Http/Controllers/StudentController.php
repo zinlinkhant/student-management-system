@@ -35,17 +35,15 @@ class StudentController extends Controller
     {
         //
         $new = $request->validate([
-            'user_id' => 'required',
             'email' => 'required',
             'password' => 'required',
             'fname' => 'required',
             'lname' => 'required',
             'dob' => 'required',
-            'parents_id' => 'required',
             'phone' => 'required',
         ]);
         Student::create($new);
-        return redirect()->route('welcome');
+        return redirect()->route('index');
     }
 
     /**

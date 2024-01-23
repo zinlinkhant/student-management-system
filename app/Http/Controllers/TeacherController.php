@@ -36,7 +36,6 @@ class TeacherController extends Controller
     {
         //
         $new = $request->validate([
-            'user_id' => 'required',
             'email' => 'required',
             'password' => 'required',
             'fname' => 'required',
@@ -45,7 +44,7 @@ class TeacherController extends Controller
             'phone' => 'required',
         ]);
         Teacher::create($new);
-        return redirect()->route('welcome');
+        return redirect()->route('index');
     }
 
     /**

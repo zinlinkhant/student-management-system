@@ -17,7 +17,6 @@ class student extends Model
         'lname',
         'dob',
         'phone',
-        'parents_id',
         'status',
     ];
     public function user()

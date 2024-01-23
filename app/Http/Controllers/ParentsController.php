@@ -34,7 +34,7 @@ class ParentsController extends Controller
         //
         $new = $request->all();
         Parents::create($new);
-        return view('welcome');
+        return view('index');
     }
 
     /**

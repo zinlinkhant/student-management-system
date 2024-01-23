@@ -23,11 +23,6 @@
 
             <!-- Email Address -->
             <div class="mt-4">
-                <x-input-label for="parent_id" :value="__('parent_id')" />
-                <x-text-input id="parent_id" class="block mt-1 w-16" type="number" name="parents_id" required />
-                <x-input-error :messages="$errors->get('parent_id')" class="mt-2" />
-            </div>
-            <div class="mt-4">
                 <x-input-label for="phone" :value="__('phone')" />
                 <x-text-input id="phone" class="block mt-1 w-full" type="number" name="phone" required />
                 <x-input-error :messages="$errors->get('phone')" class="mt-2" />

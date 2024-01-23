@@ -21,6 +21,21 @@
                         index
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('student.register')" :active="request()->routeIs('student.register')">
+                        Sregister
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('parent.register')" :active="request()->routeIs('parent.register')">
+                        Pregister
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('teacher.register')" :active="request()->routeIs('teacher.register')">
+                        Tregister
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
