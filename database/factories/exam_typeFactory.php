@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\exam_type>
  */
-class ExamTypeFactory extends Factory
+class exam_typeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,6 +18,8 @@ class ExamTypeFactory extends Factory
     {
         return [
             //
+            'name' => fake()->word(),
+            'description' => fake()->sentence()
         ];
     }
 }

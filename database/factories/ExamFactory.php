@@ -18,6 +18,9 @@ class ExamFactory extends Factory
     {
         return [
             //
+            'exam_type_id' => fake()->randomDigitNotNull(),
+            'name' => fake()->word(),
+            'start_date' => fake()->date()
         ];
     }
 }

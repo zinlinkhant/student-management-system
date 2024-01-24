@@ -24,5 +24,10 @@ class DatabaseSeeder extends Seeder
         \App\Models\Attendance::factory(10)->create();
         \App\Models\Classroom::factory(10)->create();
         \App\Models\Parents::factory(10)->create();
+        \App\Models\Course::factory(10)->create();
+        \App\Models\Exam::factory(10)->create();
+        \App\Models\exam_result::factory(10)->create();
+        \App\Models\exam_type::factory(10)->create();
+        \App\Models\Grade::factory(10)->create();
     }
 }

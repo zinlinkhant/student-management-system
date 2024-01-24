@@ -24,4 +24,8 @@ class Controller extends BaseController
         $classrooms = Classroom::all();
         return view('index', compact('students', 'parents', 'class_stu', 'stu_class', 'classrooms', 'teachers'));
     }
+    public function index1()
+    {
+        return view('index1');
+    }
 }

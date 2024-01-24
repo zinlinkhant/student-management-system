@@ -20,6 +20,7 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('/index', [Controller::class, 'index'])->name('index');
+Route::get('/index1', [Controller::class, 'index1'])->name('index1');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

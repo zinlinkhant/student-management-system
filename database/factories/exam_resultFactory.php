@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\exam_result>
  */
-class ExamResultFactory extends Factory
+class exam_resultFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,6 +18,10 @@ class ExamResultFactory extends Factory
     {
         return [
             //
+            'student_id' => fake()->randomDigitNotNull(),
+            'exam_id' => fake()->randomDigitNotNull(),
+            'course_id' => fake()->randomDigitNotNull(),
+            'marks' => fake()->numberBetween(0, 100),
         ];
     }
 }

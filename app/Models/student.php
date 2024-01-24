@@ -31,7 +31,7 @@ class student extends Model
     {
         return $this->belongsToMany(Classroom::class, 'classroom_student');
     }
-    public function attendance()
+    public function attendances()
     {
         return $this->hasMany(Attendance::class);
     }

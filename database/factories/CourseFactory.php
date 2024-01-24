@@ -18,6 +18,9 @@ class CourseFactory extends Factory
     {
         return [
             //
+            'name' => fake()->name(),
+            'description' => fake()->sentence(1),
+            'grade_id' => fake()->randomDigitNotNull()
         ];
     }
 }

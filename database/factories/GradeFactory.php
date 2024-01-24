@@ -18,6 +18,8 @@ class GradeFactory extends Factory
     {
         return [
             //
+            'name' => fake()->word(),
+            'description' => fake()->sentence(1),
         ];
     }
 }
