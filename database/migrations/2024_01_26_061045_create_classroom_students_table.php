@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Grade;
-use App\Models\Teacher;
+use App\Models\Classroom;
+use App\Models\student;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('classrooms', function (Blueprint $table) {
+        Schema::create('classroom_students', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->date('year');
-            $table->unsignedBigInteger('teacher_id');
-            $table->foreignIdFor(Grade::class);
-            $table->string('remarks');
+            $table->foreignIdFor(Classroom::class);
+            $table->foreignIdFor(student::class);
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('classrooms');
+        Schema::dropIfExists('classroom_students');
     }
 };

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class Classroom_StudentsFactory extends Factory
+class classroom_studentFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +18,8 @@ class Classroom_StudentsFactory extends Factory
     {
         return [
             //
-            'classroom_id' => fake()->randomNumber(1),
-            'student_id' => fake()->randomNumber(1)
+            'classroom_id' => fake()->randomDigitNotZero(1),
+            'student_id' => fake()->randomDigitNotZero(1)
         ];
     }
 }

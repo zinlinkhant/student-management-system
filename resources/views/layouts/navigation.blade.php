@@ -47,6 +47,7 @@
                             @if (Auth::user())
                                 <div>{{ Auth::user()->name }}</div>
                             @else
+                                <div></div>
                                 @php
                                     return view('auth.login');
                                 @endphp
