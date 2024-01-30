@@ -19,11 +19,8 @@ class student extends Model
         'phone',
         'status',
     ];
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-    public function parents()
+
+    public function parent()
     {
         return $this->belongsTo(Parents::class);
     }

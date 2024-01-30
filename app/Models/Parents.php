@@ -13,7 +13,7 @@ class Parents extends Model
         'name',
         'student_id',
     ];
-    public function student()
+    public function students()
     {
         return $this->hasMany(student::class);
     }

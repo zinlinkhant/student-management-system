@@ -11,6 +11,7 @@ use App\Models\exam_type;
 use App\Models\Grade;
 use App\Models\Parents;
 use App\Models\student;
+use App\Models\students;
 use App\Models\Teacher;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;

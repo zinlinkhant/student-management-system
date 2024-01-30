@@ -43,6 +43,13 @@ class AdminController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
+    public function stu_pa()
+    {
+        $students = student::paginate(10);
+        $parents = Parents::paginate(10);
+        return view('admin.student_parent', compact('students', 'parents'));
+    }
     public function create()
     {
         //
