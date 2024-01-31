@@ -19,7 +19,6 @@ class ParentsFactory extends Factory
         return [
             //
             'name' => fake()->name(),
-            'student_id' => fake()->numberBetween(1, 10)
         ];
     }
 }

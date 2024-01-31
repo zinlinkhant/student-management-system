@@ -26,6 +26,7 @@ class StudentFactory extends Factory
             'name' => fake()->name(),
             'dob' => fake()->date(),
             'phone' => fake()->phoneNumber(),
+            'parents_id' => fake()->numberBetween(1, 10)
 
         ];
     }

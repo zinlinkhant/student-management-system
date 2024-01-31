@@ -15,6 +15,6 @@ class Parents extends Model
     ];
     public function students()
     {
-        return $this->hasMany(student::class);
+        return $this->hasMany(Student::class);
     }
 }

@@ -16,11 +16,11 @@ class Classroom extends Model
     ];
     public function teacher()
     {
-        return $this->belongsTo(Teacher::class, 'teacher_id');
+        return $this->belongsTo(Teacher::class);
     }
     public function students()
     {
-        return $this->belongsToMany(student::class, 'classroom_students');
+        return $this->belongsToMany(Student::class, 'classroom_students');
     }
     public function grade()
     {

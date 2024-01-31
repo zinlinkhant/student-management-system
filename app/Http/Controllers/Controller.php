@@ -10,8 +10,7 @@ use App\Models\exam_result;
 use App\Models\exam_type;
 use App\Models\Grade;
 use App\Models\Parents;
-use App\Models\student;
-use App\Models\students;
+use App\Models\Student;
 use App\Models\Teacher;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -23,11 +22,11 @@ class Controller extends BaseController
 
     public function index()
     {
-        $students = student::all();
+        $students = Student::all();
         $parents = Parents::all();
         $teachers = Teacher::all();
         $class_stu = Classroom::with(['students'])->get();
-        $stu_class = student::with(['classrooms'])->get();
+        $stu_class = Student::with(['classrooms'])->get();
         $classrooms = Classroom::all();
         $exam_type = exam_type::all();
         $exam_result = exam_result::all();

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('name');
             $table->date('dob');
             $table->string('phone');
+            $table->foreignIdFor(Parents::class);
             $table->timestamps();
         });
     }

@@ -9,8 +9,7 @@
                 <a href="{{ route('admin.index') }}"
                     class="text-white hover:bg-gray-800 px-4 py-2 rounded-md hover:ml-3 hover:text-white transition-all">Home</a>
                 <a href="{{ route('admin.stu_pa') }}"
-                    class="text-white hover:bg-gray-800 px-4 py-2 rounded-md hover:ml-3 hover:text-white transition-all">Student
-                    & Parents</a>
+                    class="text-white hover:bg-gray-800 px-4 py-2 rounded-md hover:ml-3 hover:text-white transition-all">Students</a>
                 <a href="#"
                     class="text-white hover:bg-gray-800 px-4 py-2 rounded-md hover:ml-3 hover:text-white transition-all">Classrooms</a>
                 <a href="#"

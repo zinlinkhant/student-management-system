@@ -3,9 +3,12 @@
 use App\Models\Course;
 use App\Models\Exam;
 use App\Models\student;
+use App\Models\Student as ModelsStudent;
+use App\Models\Students;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use PHPUnit\Framework\MockObject\Builder\Stub;
 
 return new class extends Migration
 {

@@ -6,7 +6,6 @@ use App\Models\Admin;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
 use App\Models\Parents;
-use App\Models\student;
 use App\Models\Attendance;
 use App\Models\Classroom;
 use App\Models\Course;
@@ -14,7 +13,7 @@ use App\Models\Exam;
 use App\Models\exam_result;
 use App\Models\exam_type;
 use App\Models\Grade;
-
+use App\Models\Student;
 use App\Models\Teacher;
 
 class AdminController extends Controller
@@ -25,11 +24,11 @@ class AdminController extends Controller
     public function index()
     {
         //
-        $students = student::count();
+        $students = Student::count();
         $parents = Parents::count();
         $teachers = Teacher::count();
         $class_stu = Classroom::with(['students'])->get();
-        $stu_class = student::with(['classrooms'])->get();
+        $stu_class = Student::with(['classrooms'])->get();
         $classrooms = Classroom::count();
         $exam_type = exam_type::all();
         $exam_result = exam_result::all();
@@ -46,9 +45,8 @@ class AdminController extends Controller
 
     public function stu_pa()
     {
-        $students = student::paginate(10);
-        $parents = Parents::paginate(10);
-        return view('admin.student_parent', compact('students', 'parents'));
+        $students = Student::paginate(10);
+        return view('admin.student_parent', compact('students'));
     }
     public function create()
     {
