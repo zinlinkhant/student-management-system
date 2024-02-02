@@ -35,6 +35,9 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/stu_pa', [AdminController::class, 'stu_pa'])->name('admin.stu_pa');
+Route::get('/admin/teachers', [AdminController::class, 'teachers'])->name('admin.teachers');
+Route::get('/admin/classrooms', [AdminController::class, 'classrooms'])->name('admin.classrooms');
+Route::get('/admin/course_grade', [AdminController::class, 'course_grade'])->name('admin.course_grade');
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/student_parent.php';

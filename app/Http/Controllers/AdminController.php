@@ -48,6 +48,22 @@ class AdminController extends Controller
         $students = Student::paginate(10);
         return view('admin.student_parent', compact('students'));
     }
+    public function teachers()
+    {
+        $teachers = Teacher::paginate(10);
+        return view('admin.teachers', compact('teachers'));
+    }
+    public function classrooms()
+    {
+        $classrooms = Classroom::paginate(10);
+        return view('admin.classrooms', compact('classrooms'));
+    }
+    public function course_grade()
+    {
+        $grades = Grade::paginate(10);
+        $courses = Course::paginate(10);
+        return view('admin.course_grade', compact('grades', 'courses'));
+    }
     public function create()
     {
         //

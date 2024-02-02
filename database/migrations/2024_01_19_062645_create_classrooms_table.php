@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->date('year');
             $table->unsignedBigInteger('teacher_id');
-            $table->foreignIdFor(Grade::class);
+            $table->unsignedBigInteger('grade_id');
             $table->string('remarks');
             $table->timestamps();
         });

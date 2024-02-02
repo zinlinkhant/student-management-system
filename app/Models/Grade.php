@@ -14,7 +14,7 @@ class Grade extends Model
     ];
     public function classroom()
     {
-        return $this->belongsTo(Grade::class);
+        return $this->hasOne(Grade::class);
     }
     public function courses()
     {
