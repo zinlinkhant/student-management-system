@@ -2,7 +2,7 @@
     <div class="flex">
         <x-adminSidebar></x-adminSidebar>
         <div class="bg-white min-h-screen  p-5 rounded-lg m-5 w-full">
-            <h1 class="font-semibold text-2xl">The list of students in this school</h1>
+            <h1 class="font-semibold text-2xl">The list of Classrooms in this school</h1>
             <table class="w-full mb-2">
 
                 <tr class="border text-xl">

@@ -15,11 +15,9 @@
                     class="text-white hover:bg-gray-800 px-4 py-2 rounded-md hover:ml-3 hover:text-white transition-all block">Classrooms</a>
                 <a href="{{ route('admin.teachers') }}"
                     class="text-white hover:bg-gray-800 px-4 py-2 rounded-md hover:ml-3 hover:text-white transition-all block">Teachers</a>
-                <a href="#"
+                <a href="{{ route('admin.course_grade') }}"
                     class="text-white hover:bg-gray-800 px-4 py-2 rounded-md hover:ml-3 hover:text-white transition-all block">Course
                     and Grade</a>
-                <a href="#"
-                    class="text-white hover:bg-gray-800 px-4 py-2 rounded-md hover:ml-3 hover:text-white transition-all block">Exams</a>
             </nav>
 
         </div>

@@ -7,7 +7,7 @@ use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/student/register', [StudentController::class, 'create'])->name('student.register');
-Route::post('/student/register', [StudentController::class, 'store'])->name('student.register');
+Route::post('/student/register', [StudentController::class, 'store'])->name('student.register')->middleware('checkStatus');
 
 Route::get('/teacher/register', [TeacherController::class, 'create'])->name('teacher.register');
 Route::post('/teacher/register', [TeacherController::class, 'store'])->name('teacher.register');
