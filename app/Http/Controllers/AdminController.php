@@ -15,6 +15,9 @@ use App\Models\exam_type;
 use App\Models\Grade;
 use App\Models\Student;
 use App\Models\Teacher;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 {
@@ -24,9 +27,9 @@ class AdminController extends Controller
     public function index()
     {
         //
-        $students = Student::count();
+        $students = Role::findByName('student')->users()->count();;
         $parents = Parents::count();
-        $teachers = Teacher::count();
+        $teachers = Role::findByName('teacher')->users()->count();
         $class_stu = Classroom::with(['students'])->get();
         $stu_class = Student::with(['classrooms'])->get();
         $classrooms = Classroom::count();
@@ -63,6 +66,30 @@ class AdminController extends Controller
         $grades = Grade::paginate(10);
         $courses = Course::paginate(10);
         return view('admin.course_grade', compact('grades', 'courses'));
+    }
+    public function user()
+    {
+        $ucount = User::count();
+        $users = User::paginate(50);
+        return view('admin.user', compact('users', 'ucount'));
+    }
+    public function updateUser(User $user)
+    {
+        $users = User::find($user);
+        $role = Role::all();
+        return view('admin.updateUser', compact('users', 'role'));
+    }
+    public function updateUserRole(Request $request)
+    {
+        $user = User::find($request->userId);
+
+        if ($user) {
+            $user->assignRole($request->role);
+        } else {
+            return 'fail';
+        }
+
+        return redirect('admin/user');
     }
     public function create()
     {

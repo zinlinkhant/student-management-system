@@ -21,12 +21,10 @@ class StudentFactory extends Factory
         return [
             //
 
-            'email' => fake()->unique()->safeEmail(),
-            'password' => static::$password ??= Hash::make('password'),
-            'name' => fake()->name(),
             'dob' => fake()->date(),
             'phone' => fake()->phoneNumber(),
-            'parents_id' => fake()->numberBetween(1, 10)
+            'parents_id' => fake()->numberBetween(1, 10),
+            'user_id' => fake()->numberBetween(1, 10)
 
         ];
     }

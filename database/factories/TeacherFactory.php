@@ -20,11 +20,10 @@ class TeacherFactory extends Factory
     {
         return [
             //
-            'email' => fake()->unique()->safeEmail(),
-            'password' => static::$password ??= Hash::make('password'),
-            'name' => fake()->name(),
+
             'dob' => fake()->date(),
             'phone' => fake()->phoneNumber(),
+            'user_id' => fake()->numberBetween(1, 10)
         ];
     }
 }

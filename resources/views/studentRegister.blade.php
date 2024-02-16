@@ -8,18 +8,6 @@
             <input type="hidden" name="password" value="{{ $user->password }}">
 
             <!-- Name -->
-            <div>
-                <x-input-label for="name" :value="__('First Name')" />
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="fname" required
-                    autofocus />
-                <x-input-error :messages="$errors->get('name')" class="mt-2" />
-            </div>
-            <div>
-                <x-input-label for="name" :value="__('Last Name')" />
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="lname" required
-                    autofocus />
-                <x-input-error :messages="$errors->get('name')" class="mt-2" />
-            </div>
 
             <!-- Email Address -->
             <div class="mt-4">

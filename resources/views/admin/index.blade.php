@@ -2,7 +2,6 @@
 
     <!-- Sidebar -->
     <div class="flex relative">
-        <x-adminSidebar></x-adminSidebar>
         <div class="bg-gray-100 p-8 w-full h-screen">
             <h1
                 class="text-center mx-auto text-3xl font-semibold drop-shadow-lg bg-white px-5 py-2 rounded-md w-fit mb-5">

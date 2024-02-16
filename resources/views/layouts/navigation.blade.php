@@ -21,15 +21,17 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('parent.register')" :active="request()->routeIs('parent.register')" class="text-white hover:text-white">
-                        Pregister
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('teacher.register')" :active="request()->routeIs('teacher.register')" class="text-white hover:text-white">
                         Tregister
                     </x-nav-link>
                 </div>
+                @role('admin')
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('admin.index')" :active="request()->routeIs('teacher.register')" class="text-white hover:text-white">
+                            Admin
+                        </x-nav-link>
+                    </div>
+                @endrole
             </div>
 
             <!-- Settings Dropdown -->

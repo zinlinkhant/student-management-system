@@ -43,7 +43,6 @@
 </x-adminapp> --}}
 <x-adminapp>
     <div class="flex">
-        <x-adminSidebar></x-adminSidebar>
         <div class="bg-white  p-5 rounded-lg m-5 w-full">
             <h1 class="font-semibold text-2xl">The list of students in this school</h1>
             <table class="w-full mb-2">

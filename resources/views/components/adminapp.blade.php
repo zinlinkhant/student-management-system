@@ -25,7 +25,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-gray-100 flex">
 
 
         <!-- Page Heading -->
@@ -36,9 +36,11 @@
                 </div>
             </header>
         @endif
+        <x-adminSidebar class="flex-1">
 
+        </x-adminSidebar>
         <!-- Page Content -->
-        <main>
+        <main class="w-full">
             {{ $slot }}
         </main>
     </div>
