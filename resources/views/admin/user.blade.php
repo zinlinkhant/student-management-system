@@ -19,7 +19,14 @@
                         <td class="text-center border  transition-all group group-hover:pb-10 py-2">
                             {{ $user->email }}</td>
                         <td class="text-center border  transition-all group group-hover:pb-10 py-2">
-                            {{ $user->roles->pluck('name') }}</td>
+                            @if ($user->roles !== null)
+                                @foreach ($user->roles as $role)
+                                    {{ $role->name }}
+                                @endforeach
+                            @else
+                                'no roles'
+                            @endif
+                        </td>
                         <td class="text-center   transition-all absolute bottom-3 right-5">
                             <a href="{{ route('admin.updateUser', $user->id) }}"
                                 class="py-1 px-2 bg-blue-600 rounded-md text-white mr-2 group-hover:opacity-100 opacity-0 transition-all">Update</a><a

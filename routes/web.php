@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::get('/index1', [Controller::class, 'index1'])->name('index1');
 Route::get('/admin/stu_pa', [AdminController::class, 'stu_pa'])->name('admin.stu_pa');
 Route::get('/admin/teachers', [AdminController::class, 'teachers'])->name('admin.teachers');
 Route::get('/admin/classrooms', [AdminController::class, 'classrooms'])->name('admin.classrooms');

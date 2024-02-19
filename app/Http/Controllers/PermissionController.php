@@ -17,11 +17,13 @@ class PermissionController extends Controller
 
     public function create()
     {
+
         return view('admin.permissions.create');
     }
 
     public function store(Request $request)
     {
+        // return $request;
         $validated = $request->validate(['name' => 'required']);
 
         Permission::create($validated);
@@ -54,14 +56,12 @@ class PermissionController extends Controller
         return back()->with('message', 'Permission deleted.');
     }
 
-    public function assignRole(Request $request, Permission $permission)
+    public function assignRole(Request $request)
     {
-        if ($permission->hasRole($request->role)) {
-            return back()->with('message', 'Role exists.');
-        }
-
+        $permission = Permission::findByName($request->permission);
+        // $role = Role::findByName($request->role);
         $permission->assignRole($request->role);
-        return back()->with('message', 'Role assigned.');
+        return redirect('admin/permissions');
     }
 
     public function removeRole(Permission $permission, Role $role)

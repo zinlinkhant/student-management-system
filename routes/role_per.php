@@ -11,8 +11,9 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::resource('/roles', RoleController::class);
     Route::post('/roles/{role}/permissions', [RoleController::class, 'givePermission'])->name('roles.permissions');
     Route::delete('/roles/{role}/permissions/{permission}', [RoleController::class, 'revokePermission'])->name('roles.permissions.revoke');
+    // Route::post('/permissions/store', [PermissionController::class, 'store'])->name('permissions.store');
     Route::resource('/permissions', PermissionController::class);
-    Route::post('/permissions/{permission}/roles', [PermissionController::class, 'assignRole'])->name('permissions.roles');
+    Route::post('/permissions/roles', [PermissionController::class, 'assignRole'])->name('permissions.roles');
     Route::delete('/permissions/{permission}/roles/{role}', [PermissionController::class, 'removeRole'])->name('permissions.roles.remove');
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
