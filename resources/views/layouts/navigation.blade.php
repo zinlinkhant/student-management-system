@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-blue-400">
+<nav x-data="{ open: false }" class="bg-[#2C2760]">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -6,28 +6,64 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-white hover:text-white">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')"
+                        class="text-white hover:text-white hover:shadow-md hover:shadow-white px-8 my-2 rounded-lg -mx-4">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('index')" :active="request()->routeIs('index')" class="text-white hover:text-white">
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex ">
+                    <x-nav-link :href="route('index')" :active="request()->routeIs('index')"
+                        class="text-white hover:text-white hover:shadow-md hover:shadow-white px-8 my-2 rounded-lg -mx-4">
                         index
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('student.register')" :active="request()->routeIs('student.register')" class="text-white hover:text-white">
-                        Sregister
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('teacher.register')" :active="request()->routeIs('teacher.register')" class="text-white hover:text-white">
-                        Tregister
-                    </x-nav-link>
-                </div>
+                @if (Auth::user()->hasAnyRole(['admin', 'teacher', 'student']))
+                    @role('teacher')
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('teacher.students', Auth::user()->teacher->id)" :active="request()->routeIs('student.register')"
+                                class="text-white hover:text-white hover:shadow-md hover:shadow-white px-8 my-2 rounded-lg -mx-4">
+                                students
+                            </x-nav-link>
+                        </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('teacher.class_course', Auth::user()->teacher->id)" :active="request()->routeIs('student.register')"
+                                class="text-white hover:text-white hover:shadow-md hover:shadow-white px-8 my-2 rounded-lg -mx-4">
+                                class and course
+                            </x-nav-link>
+                        </div>
+                    @endrole
+                    @role('student')
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('student.classrooms', Auth::user()->student->id)" :active="request()->routeIs('student.register')"
+                                class="text-white hover:text-white hover:shadow-md hover:shadow-white px-8 my-2 rounded-lg -mx-4">
+                                your classrooms
+                            </x-nav-link>
+                        </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('student.register')" :active="request()->routeIs('student.register')"
+                                class="text-white hover:text-white hover:shadow-md hover:shadow-white px-8 my-2 rounded-lg -mx-4">
+                                Grade and courses
+                            </x-nav-link>
+                        </div>
+                    @endrole
+                @else
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('student.register')" :active="request()->routeIs('student.register')"
+                            class="text-white hover:text-white hover:shadow-md hover:shadow-white px-8 my-2 rounded-lg -mx-4">
+                            Sregister
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('teacher.register')" :active="request()->routeIs('teacher.register')"
+                            class="text-white hover:text-white hover:shadow-md hover:shadow-white px-8 my-2 rounded-lg -mx-4">
+                            Tregister
+                        </x-nav-link>
+                    </div>
+                @endif
                 @role('admin')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('admin.index')" :active="request()->routeIs('teacher.register')" class="text-white hover:text-white">
+                        <x-nav-link :href="route('admin.index')" :active="request()->routeIs('teacher.register')"
+                            class="text-white hover:text-white hover:shadow-md hover:shadow-white px-8 my-2 rounded-lg -mx-4">
                             Admin
                         </x-nav-link>
                     </div>
@@ -60,8 +96,8 @@
                         </button>
                     </x-slot>
 
-                    <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
+                    <x-slot name="content" class="py-0">
+                        <x-dropdown-link :href="route('profile.edit')" class="bg-[#2C2760] text-white hover:text-[#2C2760]">
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
@@ -71,7 +107,8 @@
 
                             <x-dropdown-link :href="route('logout')"
                                 onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                                this.closest('form').submit();"
+                                class="bg-[#2C2760] text-white hover:text-[#2C2760]">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>

@@ -27,10 +27,16 @@
                         {{ $r->name }}
                     @endforeach
                 </div>
-                <div>
+                <div class="flex">
                     <a href="{{ route('admin.permissions.edit', $per->id) }}"
                         class="py-2 px-5 rounded-md bg-green-500 text-gray-100 mr-3">Edit</a>
-                    <a href="" class="py-2 px-5 rounded-md bg-red-500 text-gray-100 mr-3">Delete</a>
+                    <form method="POST" action="{{ route('admin.permissions.destroy', $per->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"
+                            class="py-2 px-5 rounded-md bg-red-500 text-gray-100 mr-3">Delete</button>
+                    </form>
+
                 </div>
             </li>
         @endforeach

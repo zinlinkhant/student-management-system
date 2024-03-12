@@ -73,11 +73,21 @@ class AdminController extends Controller
         $users = User::paginate(50);
         return view('admin.user', compact('users', 'ucount'));
     }
+    public function allowStudent()
+    {
+        return view('admin.allowStudentRequest');
+    }
     public function updateUser(User $user)
     {
         $users = User::find($user);
         $role = Role::all();
         return view('admin.updateUser', compact('users', 'role'));
+    }
+    public function removeUser(User $user)
+    {
+        $users = User::find($user);
+        $role = Role::all();
+        return view('admin.removeUserRole', compact('users', 'role'));
     }
     public function updateUserRole(Request $request)
     {
@@ -90,6 +100,37 @@ class AdminController extends Controller
         }
 
         return redirect('admin/user');
+    }
+    public function removeUserRole(Request $request)
+    {
+
+        $user = User::find($request->userId);
+        if ($user) {
+            $user->removeRole($request->role);
+        } else {
+            return 'fail';
+        }
+
+        return redirect('admin/user');
+    }
+    public function create_course()
+    {
+        //
+        $classrooms = Classroom::all();
+        return view('teacher.create_course', compact('classrooms'));
+    }
+    public function store_course(Request $request)
+    {
+        //
+        // return $request;
+
+        $new = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'grade_id' => 'required',
+        ]);
+        Course::create($new);
+        return redirect(route('index'));
     }
     public function create()
     {

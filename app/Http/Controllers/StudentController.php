@@ -28,6 +28,12 @@ class StudentController extends Controller
         return view('studentRegister', compact('user'));
     }
 
+    public function classrooms(Student $student)
+    {
+        $classrooms = $student->classrooms;
+        return view('student.classroom', compact('classrooms'));
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -35,12 +41,12 @@ class StudentController extends Controller
     {
         //
         $new = $request->validate([
-            'name' => 'required',
             'dob' => 'required',
             'phone' => 'required',
         ]);
+
         Student::create($new);
-        return redirect()->route('index');
+        return redirect('/index')->withMessage('it works');
     }
 
     /**

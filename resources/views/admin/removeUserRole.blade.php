@@ -4,7 +4,7 @@
             Name : {{ $user->name }} <br>
             email : {{ $user->email }} <br>
             roles : {{ $user->roles->pluck('name') }} <br>
-            <form action="{{ route('admin.updateUserRole') }}" method="POST">
+            <form action="{{ route('admin.removeUserRole') }}" method="POST">
                 @csrf
                 <input type="hidden" name="userId" value="{{ $user->id }}">
                 <select name="role" id="" class="px-5 py-2 mt-3   rounded-md">
@@ -15,7 +15,6 @@
                 </select>
                 <input type="submit" value="submit" class="px-5 py-2 mt-3 bg-blue-500 text-white rounded-md">
             </form>
-            <a href="{{ route('admin.removeUser', $user->id) }}">Remove User role</a>
         </div>
     @endforeach
 </x-adminapp>

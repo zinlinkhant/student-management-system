@@ -27,11 +27,15 @@
                                 'no roles'
                             @endif
                         </td>
-                        <td class="text-center   transition-all absolute bottom-3 right-5">
+                        <td class="text-center   transition-all absolute bottom-3 right-5 flex">
                             <a href="{{ route('admin.updateUser', $user->id) }}"
-                                class="py-1 px-2 bg-blue-600 rounded-md text-white mr-2 group-hover:opacity-100 opacity-0 transition-all">Update</a><a
-                                href="#"
-                                class="py-1 px-2 bg-red-600 rounded-md text-white  group-hover:opacity-100 opacity-0 transition-all">Delete</a>
+                                class="py-1 px-2 bg-blue-600 rounded-md text-white mr-2 group-hover:opacity-100 opacity-0 transition-all">Update</a>
+                            <form method="POST" action="{{ route('admin.user.destroy', $user->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                    class="py-1 px-2 bg-red-600 rounded-md text-white mr-2 group-hover:opacity-100 opacity-0 transition-all">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Attendance;
 use App\Models\Classroom;
+use App\Models\classroom_student;
 use App\Models\Course;
 use App\Models\Exam;
 use App\Models\exam_result;
@@ -12,8 +13,10 @@ use App\Models\Grade;
 use App\Models\Parents;
 use App\Models\Student;
 use App\Models\Teacher;
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
@@ -36,8 +39,15 @@ class Controller extends BaseController
         $grade = Grade::all();
         return view('index', compact('students', 'parents', 'class_stu', 'stu_class', 'classrooms', 'teachers', 'exam_type', 'exam_result', 'exam', 'attendance', 'course', 'grade'));
     }
-    public function index1()
+    public function enrollGrade(User $user)
     {
-        return view('index1');
+        $grades = Grade::all();
+        return view('enrollGrade', compact('grades', 'user'));
+    }
+    public function enrollGradeUser(Request $request)
+    {
+        $new = $request->all();
+        classroom_student::create($new);
+        return redirect('/');
     }
 }

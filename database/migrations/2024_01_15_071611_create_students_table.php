@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->date('dob');
             $table->string('phone');
-            $table->foreignIdFor(Parents::class);
+            $table->foreignIdFor(Parents::class)->nullable();
             $table->foreignIdFor(User::class);
             $table->timestamps();
         });
