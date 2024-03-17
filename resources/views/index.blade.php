@@ -2,6 +2,12 @@
     @php
         $user = Auth::user();
     @endphp
+    @if (session('message'))
+        <div class=" py-2 px-5 bg-yellow-300 flex justify-between items-center warning">
+            <h1 class="text-xl">{{ session('message') }}</h1>
+            <button class="bg-red-400 px-3 py-2 rounded-md text-white warning_button">hide</button>
+        </div>
+    @endif
     <div class="antialiased bg-white font-sans text-gray-900">
         <main class="w-full">
             <div class="bg-gray-100">
@@ -22,7 +28,7 @@
                                 Dooley, where trust and comfort are priorities.
                             </p>
                             @role('student')
-                                @if ($user->student?->classrooms !== null)
+                                @if ($user->student?->classrooms === null)
                                     <a href="#"
                                         class="px-8 py-4 bg-teal-500 text-white rounded inline-block mt-8 font-semibold">View
                                         your course</a>
@@ -266,11 +272,32 @@
             </div>
             <!-- End Hero --> --}}
             @role('student')
-                @if ($user->student?->classrooms !== null)
+                @if ($user->student->classrooms->isEmpty())
+                    <div class="w-8/12 m-auto p-5 border-2 border-yellow-300 rounded-md">
+                        <h2 class="text-3xl leading-tight font-bold">
+                            You don't have course
+                        </h2>
+                        <p class="text-gray-600 mt-2 md:max-w-lg">
+                            every grades have a lot of courses Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Voluptatibus delectus pariatur itaque!
+                        </p>
+                    </div>
+                    <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mt-8" role="alert">
+                        <p class="font-bold">Warning:</p>
+                        <p>You need to enroll in a grade to access the course.</p>
+                    </div>
+                @else
                     <section class="relative bg-gray-100 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 py-32">
-
+                        <div class="bg-white my-2 p-3 rounded-md shadow-md">
+                            <h2 class="text-3xl leading-tight font-bold">
+                                All of your classrooms
+                            </h2>
+                            <p class="text-gray-600 mt-2 md:max-w-lg">
+                                every grades have a lot of courses Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Voluptatibus delectus pariatur itaque!
+                            </p>
+                        </div>
                         <div class="w-fit my-5">
-
                             @foreach ($user->student->classrooms as $cl)
                                 <div class="bg-white rounded border border-gray-300 mb-5">
                                     <div class="p-4 text-wrap">
@@ -332,10 +359,10 @@
                                 @endforeach
                             </div>
                         </div>
-                    @else
-                        <div class="">
+
+                        {{-- <div class="w-8/12 m-auto p-5 border-2 border-yellow-300 rounded-md">
                             <h2 class="text-3xl leading-tight font-bold">
-                                All of your course
+                                You don't have course
                             </h2>
                             <p class="text-gray-600 mt-2 md:max-w-lg">
                                 every grades have a lot of courses Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -345,7 +372,7 @@
                         <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mt-8" role="alert">
                             <p class="font-bold">Warning:</p>
                             <p>You need to enroll in a grade to access the course.</p>
-                        </div>
+                        </div> --}}
                 @endif
             @endrole
             @role('teacher')
@@ -427,7 +454,7 @@
                     @else
                         <div class="">
                             <h2 class="text-3xl leading-tight font-bold">
-                                All of your course
+                                You don't have course
                             </h2>
                             <p class="text-gray-600 mt-2 md:max-w-lg">
                                 every grades have a lot of courses Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -441,6 +468,8 @@
                 @endif
             @endrole
             </section>
+
+
             <!-- end blog -->
 
             <!-- start cta -->
@@ -631,9 +660,19 @@
                 </div>
             </footer> --}}
             <!-- end footer -->
+
         </main>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
 
     </div>
+
+    <script>
+        $(document).ready(function() {
+            // Hide all elements with the class "warning" when the document is ready
+            $(".warning_button").click(function() {
+                $('.warning').toggle('500');
+            });
+        });
+    </script>
 </x-app-layout>

@@ -15,6 +15,16 @@ class checkRole
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+        // if (!auth()->user()->student->classrooms === null) {
+        //     return redirect('index')->with('message', 'you dont have classroom');
+        // } else {
+        //     return redirect('index');
+        // }
+
+        if (auth()->check() && auth()->user()->student && auth()->user()->student->classrooms->isEmpty()) {
+            return redirect('index')->with('message', 'You have to enroll in class');
+        } else {
+            return $next($request);
+        }
     }
 }
